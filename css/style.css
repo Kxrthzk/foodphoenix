@@ -1,0 +1,249 @@
+/* Base Styles */
+body {
+    padding-top: 70px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6; /* Improved readability */
+}
+
+.main-content {
+    min-height: calc(100vh - 180px);
+    padding: 20px 0; /* Add some padding to the main content area */
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(135deg, #ff6b35 0%, #e63946 100%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+    object-fit: contain;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: white;
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Cards */
+.card {
+    border: none; /* Remove default border */
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #fff; /* Ensure header is white */
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Icons */
+.bi {
+    vertical-align: text-bottom;
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Make it circular */
+    color: white;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    border-radius: 50%; /* Make it circular */
+    color: white;
+    font-size: 2rem; /* Increase icon size */
+}
+
+/* Buttons */
+.btn-success {
+    background-color: #2a9d8f;
+    border-color: #2a9d8f;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #228176;
+    border-color: #228176;
+}
+
+.btn-outline-primary {
+    border-color: #1976d2;
+    color: #1976d2;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #1976d2;
+    color: white;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 120px 0; /* Increased padding */
+    color: white;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 50px;
+    border-radius: 15px; /* Rounded corners for modern look */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+}
+
+.hero-section h1 {
+    font-size: 3.5rem; /* Larger title */
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
+}
+
+.hero-section p {
+    font-size: 1.25rem; /* Larger subtitle */
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+/* Recipe Cards */
+.recipe-card {
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.recipe-img-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+}
+
+.recipe-img-container img {
+    transition: transform 0.5s ease;
+}
+
+.recipe-card:hover .recipe-img-container img {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+.recipe-time-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+/* Footer */
+.footer {
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Forms */
+.form-control {
+    border-radius: 7px;
+    border: 1px solid #ddd;
+}
+
+.form-select {
+    border-radius: 7px;
+    border: 1px solid #ddd;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 7px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Tooltips */
+[data-bs-toggle="tooltip"] {
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+
+    .hero-section {
+        padding: 80px 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Custom Scrollbar (Webkit browsers) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
