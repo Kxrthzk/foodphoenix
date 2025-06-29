@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - FoodPhoenix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .faq-item {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: #28a745;
+        }
+
+        .faq-question {
+            background: #f8f9fa;
+            padding: 1.25rem;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-weight: 600;
+            color: #495057;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #e9ecef;
+            color: #28a745;
+        }
+
+        .faq-question:focus {
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+        }
+
+        .faq-answer {
+            padding: 1.25rem;
+            background: white;
+            border-radius: 0 0 8px 8px;
+            display: none;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .category-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .search-box {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation (same as other pages) -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                <img src="img/foodphoenix.png" alt="FoodPhoenix Logo" class="me-2" style="height: 40px; width: 40px;">
+                FoodPhoenix
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            <i class="bi bi-house me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="inventory.html">
+                            <i class="bi bi-box me-1"></i>Inventory
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recipes.html">
+                            <i class="bi bi-book me-1"></i>Recipes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="food-board.html">
+                            <i class="bi bi-share me-1"></i>Food Sharing
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="waste-report.html">
+                            <i class="bi bi-bar-chart me-1"></i>Reports
+                        </a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person me-1"></i>User
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">
+                                <i class="bi bi-box-arrow-right me-1"></i>Logout
+                            </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container mt-4">
+            <!-- Header -->
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bold text-success">Frequently Asked Questions</h1>
+                <p class="text-muted fs-5">Find answers to common questions about FoodPhoenix and food waste reduction</p>
+            </div>
+
+            <!-- Search Box -->
+            <div class="search-box text-white">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h4 class="mb-3">
+                            <i class="bi bi-search me-2"></i>Can't find what you're looking for?
+                        </h4>
+                        <p class="mb-0">Search through our FAQ database to find answers quickly.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="faqSearch" placeholder="Search FAQs...">
+                            <button class="btn btn-light" type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Categories -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="fw-bold mb-3">Quick Categories</h3>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button class="btn btn-outline-success btn-sm category-filter" data-category="all">All Questions</button>
+                        <button class="btn btn-outline-success btn-sm category-filter" data-category="general">General</button>
+                        <button class="btn btn-outline-success btn-sm category-filter" data-category="inventory">Inventory</button>
+                        <button class="btn btn-outline-success btn-sm category-filter" data-category="sharing">Food Sharing</button>
+                        <button class="btn btn-outline-success btn-sm category-filter" data-category="waste">Waste Reduction</button>
+                        <button class="btn btn-outline-success btn-sm category-filter" data-category="technical">Technical</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Items -->
+            <div id="faqContainer">
+                <!-- General Questions -->
+                <div class="faq-item" data-category="general">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="category-badge bg-primary me-2">General</span>
+                                What is FoodPhoenix and how does it help reduce food waste?
+                            </div>
+                            <i class="bi bi-chevron-down faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>FoodPhoenix is a comprehensive food waste reduction platform that helps individuals and communities track their food inventory, share surplus food, and reduce waste through smart management tools. Our platform provides:</p>
+                        <ul>
+                            <li>Digital inventory tracking with expiry date monitoring</li>
+                            <li>Food sharing capabilities to donate surplus items</li>
+                            <li>Recipe suggestions based on available ingredients</li>
+                            <li>Waste analytics and reporting</li>
+                            <li>Community features to connect with local food banks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="category-badge bg-primary me-2">General</span>
+                                Is FoodPhoenix free to use?
+                            </div>
+                            <i class="bi bi-chevron-down faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! FoodPhoenix is completely free to use. We believe that reducing food waste should be accessible to everyone. Our platform is supported by community donations and partnerships with local organizations committed to sustainability.</p>
+                    </div>
+                </div>
+
+                <!-- Inventory Questions -->
+                <div class="faq-item" data-category="inventory">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="category-badge bg-success me-2">Inventory</span>
+                                How do I add items to my inventory?
+                            </div>
+                            <i class="bi bi-chevron-down faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Adding items to your inventory is simple:</p>
+                        <ol>
+                            <li>Navigate to the "Add Item" page from your inventory</li>
+                            <li>Fill in the required information: name, category, quantity, and expiry date</li>
+                            <li>Optionally add notes and upload an image</li>
+                            <li>Click "Add Item" to save</li>
+                        </ol>
+                        <p>Your item will be automatically added to your inventory with status indicators (Fresh, Urgent, or Expired) based on the expiry date.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="inventory">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="category-badge bg-success me-2">Inventory</span>
+                                How does the expiry date tracking work?
+                            </div>
+                            <i class="bi bi-chevron-down faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our expiry date tracking system automatically categorizes your items:</p>
+                        <ul>
+                            <li><strong>Fresh (Green):</strong> Items with more than 3 days until expiry</li>
+                            <li><strong>Urgent (Yellow):</strong> Items expiring within 1-3 days</li>
+                            <li><strong>Expired (Red):</strong> Items that have passed their expiry date</li>
+                        </ul>
+                        <p>You can set up notifications to receive alerts when items are approaching their expiry date.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="inventory">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="category-badge bg-success me-2">Inventory</span>
+                                Can I edit or delete items from my inventory?
+                            </div>
+                            <i class="bi bi-chevron-down faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! You can manage your inventory items:</p>
+                        <ul>
+                            <li><strong>Edit:</strong> Click the pencil icon next to any item to modify its details</li>
+                            <li><strong>Delete:</strong> Click the trash icon to remove items from your inventory</li>
+                            <li><strong>Share:</strong> Use the share icon to offer items to the community</li>
+                        </ul>
+                        <p>All changes are saved automatically to your local storage.</p>
+                    </div>
+                </div>
+
+                <!-- Food Sharing Questions -->
+                <div class="faq-item" data-category="sharing">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="category-badge bg-warning me-2">Food Sharing</span>
+                                How does food sharing work?
+                            </div>
+                            <i class="bi bi-chevron-down faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Food sharing allows you to offer surplus food items to your community:</p>
+                        <ol>
+                            <li>Select items from your inventory that you want to share</li>
+                            <li>Set pickup location and time preferences</li>
+                            <li>Add any special instructions or dietary information</li>
+                            <li>Post your offer to the community board</li>
+                            <li>Connect with interested community members</li>
+                        </ol>
+                        <p>This helps reduce waste while supporting your local community.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="sharing">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="category-badge bg-warning me-2">Food Sharing</span>
+                                Is it safe to share food with strangers?
+                            </div>
+                            <i class="bi bi-chevron-down faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We prioritize safety in food sharing:</p>
+                        <ul>
+                            <li>Only share items that are within their expiry date</li>
+                            <li>Meet in public, well-lit locations</li>
+                            <li>Communicate clearly about item conditions</li>
+                            <li>Use our community rating system to build trust</li>
+                            <li>Report any concerns to our support team</li>
+                        </ul>
+                        <p>Always use your best judgment and follow local food safety guidelines.</p>
+                    </div>
+                </div>
+
+                <!-- Waste Reduction Questions -->
+                <div class="faq-item" data-category="waste">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="category-badge bg-info me-2">Waste Reduction</span>
+                                How can I reduce food waste in my household?
+                            </div>
+                            <i class="bi bi-chevron-down faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Here are effective strategies to reduce food waste:</p>
+                        <ul>
+                            <li><strong>Plan meals:</strong> Create weekly meal plans and shopping lists</li>
+                            <li><strong>Store properly:</strong> Learn optimal storage conditions for different foods</li>
+                            <li><strong>Use leftovers:</strong> Transform leftovers into new meals</li>
+                            <li><strong>Freeze surplus:</strong> Freeze items before they expire</li>
+                            <li><strong>Compost:</strong> Compost unavoidable food waste</li>
+                            <li><strong>Share surplus:</strong> Use our platform to share with others</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="waste">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="category-badge bg-info me-2">Waste Reduction</span>
+                                What should I do with expired food?
+                            </div>
+                            <i class="bi bi-chevron-down faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>When food expires, consider these options:</p>
+                        <ul>
+                            <li><strong>Check if it's still safe:</strong> Some foods are safe beyond their "best before" date</li>
+                            <li><strong>Compost:</strong> Most expired food can be composted</li>
+                            <li><strong>Animal feed:</strong> Some items can be fed to pets or livestock</li>
+                            <li><strong>Dispose properly:</strong> Use appropriate waste disposal methods</li>
+                        </ul>
+                        <p>Remember: "Best before" dates indicate quality, not safety. Use your senses to determine if food is still good.</p>
+                    </div>
+                </div>
+
+                <!-- Technical Questions -->
+                <div class="faq-item" data-category="technical">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="category-badge bg-secondary me-2">Technical</span>
+                                How is my data stored and protected?
+                            </div>
+                            <i class="bi bi-chevron-down faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Your privacy and data security are important to us:</p>
+                        <ul>
+                            <li>All data is stored locally in your browser using localStorage</li>
+                            <li>We don't collect or store personal information on our servers</li>
+                            <li>Your inventory data remains private and secure</li>
+                            <li>You can export your data anytime</li>
+                            <li>We use HTTPS encryption for all communications</li>
+                        </ul>
+                        <p>For additional security, consider regularly backing up your data.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="technical">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="category-badge bg-secondary me-2">Technical</span>
+                                What browsers are supported?
+                            </div>
+                            <i class="bi bi-chevron-down faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>FoodPhoenix works on all modern browsers:</p>
+                        <ul>
+                            <li>Chrome (version 60+)</li>
+                            <li>Firefox (version 55+)</li>
+                            <li>Safari (version 12+)</li>
+                            <li>Edge (version 79+)</li>
+                            <li>Mobile browsers (iOS Safari, Chrome Mobile)</li>
+                        </ul>
+                        <p>For the best experience, we recommend using the latest version of your preferred browser.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="technical">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="category-badge bg-secondary me-2">Technical</span>
+                                Can I use FoodPhoenix offline?
+                            </div>
+                            <i class="bi bi-chevron-down faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! FoodPhoenix works offline for most features:</p>
+                        <ul>
+                            <li>Add and manage inventory items</li>
+                            <li>View your current inventory</li>
+                            <li>Check expiry dates and status</li>
+                            <li>Access saved recipes</li>
+                        </ul>
+                        <p>Some features like food sharing and community features require an internet connection.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="contact-card">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="mb-3">
+                                    <i class="bi bi-question-circle me-2"></i>Still have questions?
+                                </h4>
+                                <p class="mb-0">Can't find the answer you're looking for? Our support team is here to help!</p>
+                            </div>
+                            <div class="col-md-4 text-md-end">
+                                <a href="mailto:support@foodphoenix.com" class="btn btn-light me-2">
+                                    <i class="bi bi-envelope me-1"></i>Email Support
+                                </a>
+                                <a href="help.html" class="btn btn-outline-light">
+                                    <i class="bi bi-chat me-1"></i>Help Center
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (same as other pages) -->
+    <footer class="footer bg-light">
+        <!-- ... your footer code ... -->
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize tooltips
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+
+        // Toggle FAQ items
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('show');
+                }
+            });
+            
+            document.querySelectorAll('.faq-icon').forEach(item => {
+                if (item !== icon) {
+                    item.classList.remove('rotated');
+                }
+            });
+            
+            // Toggle current FAQ item
+            answer.classList.toggle('show');
+            icon.classList.toggle('rotated');
+        }
+
+        // Search functionality
+        document.getElementById('faqSearch').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    // Highlight search term
+                    if (searchTerm) {
+                        highlightText(item, searchTerm);
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Category filter functionality
+        document.querySelectorAll('.category-filter').forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                const faqItems = document.querySelectorAll('.faq-item');
+                
+                // Update active button
+                document.querySelectorAll('.category-filter').forEach(btn => {
+                    btn.classList.remove('btn-success');
+                    btn.classList.add('btn-outline-success');
+                });
+                this.classList.remove('btn-outline-success');
+                this.classList.add('btn-success');
+                
+                // Filter items
+                faqItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Clear search
+                document.getElementById('faqSearch').value = '';
+            });
+        });
+
+        // Highlight search terms
+        function highlightText(element, searchTerm) {
+            const question = element.querySelector('.faq-question');
+            const answer = element.querySelector('.faq-answer');
+            
+            // Remove existing highlights
+            question.innerHTML = question.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1');
+            answer.innerHTML = answer.innerHTML.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1');
+            
+            // Add new highlights
+            const questionText = question.textContent;
+            const answerText = answer.textContent;
+            
+            const highlightedQuestion = questionText.replace(new RegExp(searchTerm, 'gi'), 
+                `<mark class="highlight bg-warning">$&</mark>`);
+            const highlightedAnswer = answerText.replace(new RegExp(searchTerm, 'gi'), 
+                `<mark class="highlight bg-warning">$&</mark>`);
+            
+            question.innerHTML = highlightedQuestion;
+            answer.innerHTML = highlightedAnswer;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Close all FAQ items
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    item.classList.remove('show');
+                });
+                document.querySelectorAll('.faq-icon').forEach(item => {
+                    item.classList.remove('rotated');
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
